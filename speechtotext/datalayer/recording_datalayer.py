@@ -1,14 +1,20 @@
 from datalayer.db import execute
+from models.recording import Recording
+import gc
 
 def load_recordings_by_user(user_id):
     """
     Load entire recording data from the database
     """
-    sql = "SELECT r.`PK`, r.`StoredTimestamp`, r.`TimeToRecording`, r.`Transcript`, r.`Value`, r.`RecordingString` FROM `Recording` r JOIN ExperimentExercise ee ON ee.RecordingFK = r.PK JOIN Experiment e ON e.PK = ee.ExperimentFK JOIN User u ON u.PK = e.UserFK WHERE u.ID = %s"
+    sql = "SELECT r.`PK`, r.`TimeToRecording`, r.`Transcript`, r.`Value`, r.`RecordingString` FROM `Recording` r JOIN ExperimentExercise ee ON ee.RecordingFK = r.PK JOIN Experiment e ON e.PK = ee.ExperimentFK JOIN User u ON u.PK = e.UserFK WHERE u.ID = %s"
 
     result = execute(sql, (user_id), "SELECT")
 
-    return result
+    out_list = make_list(result)
+    del result
+    gc.collect()
+
+    return out_list
 
 def store_transcript():
     """
@@ -26,3 +32,9 @@ def store_recording_to_file(filename: str):
     """
     print(filename)
     return True
+
+def make_list(recordings):
+	def apply(x):
+		return Recording(x["PK"], x["TimeToRecording"], x["Transcript"], x["Value"], x["RecordingString"])
+
+	return list(map(apply, recordings))

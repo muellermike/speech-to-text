@@ -104,11 +104,15 @@ celerybeat.pid
 # Environments
 .env
 .venv
+*.ini
+*.csv
 env/
 venv/
 ENV/
 env.bak/
 venv.bak/
+
+*exec
 
 # Spyder project settings
 .spyderproject
@@ -127,3 +131,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# output folder with all files
+output/
+speechtotext/services/ffmpeg

@@ -32,11 +32,11 @@ def store_recording_to_file(filename: str, recordingString: str):
     """
     store the recording to a file with the filename
     """
-    wav_file = open("output/wavs/temp.webm", "wb")
+    wav_file = open("output/wavs/" + filename, "wb")
     decode_string = b64decode(recordingString.split(",")[1])
     wav_file.write(decode_string)
 
-    moviepy.ffmpeg_tools.ffmpeg_extract_audio("output/wavs/temp.webm", "output/wavs/" + filename)
+    #moviepy.ffmpeg_tools.ffmpeg_extract_audio("output/wavs/temp.webm", "output/wavs/" + filename)
     return True
 
 def make_list(recordings):

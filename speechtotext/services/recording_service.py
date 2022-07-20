@@ -16,7 +16,7 @@ def transcript_recordings(recordings: list[Recording]):
         
         store_recording_to_file(filename, r.recording)
         
-        with sr.AudioFile("output/wavs/" + filename) as source:
+        with sr.AudioFile("speechtotext/output/wavs/" + filename) as source:
             # listen for the data (load audio to memory)
             audio_data = recognizer.record(source)
             # recognize (convert from speech to text)

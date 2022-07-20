@@ -32,7 +32,7 @@ def store_recording_to_file(filename: str, recordingString: str):
     """
     store the recording to a file with the filename
     """
-    wav_file = open("output/wavs/" + filename, "wb")
+    wav_file = open("speechtotext/output/wavs/" + filename, "wb")
     decode_string = b64decode(recordingString.split(",")[1])
     wav_file.write(decode_string)
 

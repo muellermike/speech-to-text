@@ -6,7 +6,7 @@ def execute(sql, params, statement):
     Runs an sql command on the database and returns result if there is one.
     """
     config = configparser.ConfigParser()
-    config.read("../config.ini")
+    config.read("config.ini")
 
     db_config = config["DATABASE"]
 

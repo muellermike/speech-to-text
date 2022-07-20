@@ -4,7 +4,7 @@
 from services.recording_service import get_user_recordings, transcript_recordings, store_transcripts
 import csv
 
-with open("assets/users.csv", newline='') as csvfile:
+with open("speechtotext/assets/users.csv", newline='') as csvfile:
     userreader = csv.reader(csvfile, delimiter=',', quotechar='|')
     for row in userreader:
         print("---------------------")

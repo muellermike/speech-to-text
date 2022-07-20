@@ -6,6 +6,8 @@ __pycache__/
 # C extensions
 *.so
 
+*.DS_Store
+
 # Distribution / packaging
 .Python
 build/
@@ -135,3 +137,4 @@ dmypy.json
 # output folder with all files
 output/
 speechtotext/services/ffmpeg
+speechtotext/.DS_Store

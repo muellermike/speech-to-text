@@ -1,3 +1,4 @@
+import configparser
 from datalayer.recording_datalayer import load_recordings_by_user, store_transcript, store_recording_to_file
 from models.recording import Recording
 import speech_recognition as sr
@@ -10,13 +11,16 @@ def get_user_recordings(user_id):
 
 def transcript_recordings(recordings: list[Recording]):
     recognizer = sr.Recognizer()
+    config = configparser.ConfigParser()
+    config.read("config.ini")
+    file_config = config["FILE_SYS"]
 
     for r in recordings:
         filename = str(r.user_id) + "_" + str(r.experiment_id) + "_" + str(r.exercise_id) + "_" + str(r.id) + ".wav"
         
         store_recording_to_file(filename, r.recording)
         
-        with sr.AudioFile("speechtotext/output/wavs/" + filename) as source:
+        with sr.AudioFile(file_config.get("WAV_PATH") + filename) as source:
             # listen for the data (load audio to memory)
             audio_data = recognizer.record(source)
             # recognize (convert from speech to text)

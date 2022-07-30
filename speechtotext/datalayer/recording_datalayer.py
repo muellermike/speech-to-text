@@ -1,3 +1,4 @@
+import configparser
 from datalayer.db import execute
 from models.recording import Recording
 import gc
@@ -32,7 +33,11 @@ def store_recording_to_file(filename: str, recordingString: str):
     """
     store the recording to a file with the filename
     """
-    wav_file = open("speechtotext/output/wavs/" + filename, "wb")
+    config = configparser.ConfigParser()
+    config.read("config.ini")
+    file_config = config["FILE_SYS"]
+
+    wav_file = open(file_config.get("WAV_PATH") + filename, "wb")
     decode_string = b64decode(recordingString.split(",")[1])
     wav_file.write(decode_string)
 

@@ -138,3 +138,4 @@ dmypy.json
 output/
 speechtotext/services/ffmpeg
 speechtotext/.DS_Store
+speechtotext/assets/.DS_Store

@@ -1,7 +1,7 @@
 class Recording():
 
     def __init__(self, id: int=None, time_to_recording: int=None, transcript: str=None, value: str=None, recording: str=None, experiment_id: int=None, user_id: int=None, exercise_id: int=None):  # noqa: E501
-        """Recording - a model defined in Swagger
+        """Recording - a model
 
         :param id: The id of this Recording.  # noqa: E501
         :type id: int
@@ -9,6 +9,10 @@ class Recording():
         :type recording: string
         :param time_to_recording: The time_to_recording of this Recording.  # noqa: E501
         :type time_to_recording: int
+        :param transcript: The transcript of this Recording.
+        :type transcript: str
+        :param value: The value of this Recording.
+        :type value: str
         :param experiment_id: The experiment_id of this Recording.  # noqa: E501
         :type experiment_id: int
         :param user_id: The user_id of this Recording.  # noqa: E501

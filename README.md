@@ -10,4 +10,4 @@ Install all dependencies with:
 
 
 Run the script with the command:
-`python3 speechtotext/speechtotext.py`
+`python3 speechtotext/speechtotext.py "speechtotext/assets/users_run3.csv"`

@@ -2,9 +2,12 @@
 # this file covers the main script procedure
 # ------------------------------------------
 from services.recording_service import get_user_recordings, transcript_recordings, store_transcripts
-import csv
+import csv, sys
 
-with open("speechtotext/assets/users_testrun2.csv", newline='') as csvfile:
+# get first argument as input filename
+inFile = sys.argv[1]
+
+with open(inFile, newline='') as csvfile:
     userreader = csv.reader(csvfile, delimiter=',', quotechar='|')
     for row in userreader:
         print("---------------------")

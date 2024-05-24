@@ -15,6 +15,17 @@ with open(inFile, newline='') as csvfile:
         print("---------------------")
         print(row[0])
         recordings = get_user_recordings(row[0])
+        #recordings = [
+        #    {
+        #        "user_id": 1, 
+        #        "experiment_id": 2,
+        #        "transcript": "",
+        #        "value": "", 
+        #        "recording": row[1],
+        #        "exercise_id": 1,
+        #        "time_to_recording": 1
+        #    }
+        #]
         for r in recordings:
             print(r.user_id)
             print(r.experiment_id)
@@ -22,6 +33,7 @@ with open(inFile, newline='') as csvfile:
         print("start transcription")
         transcript_recordings(recordings)
         print("end transcription")
+        print(recordings[0].transcript)
         print("start storing")
         store_transcripts(recordings)
         print("end storing")

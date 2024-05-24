@@ -19,7 +19,7 @@ def transcript_recordings(recordings: list[Recording]):
         filename = str(r.user_id) + "_" + str(r.experiment_id) + "_" + str(r.exercise_id) + "_" + str(r.id) + ".wav"
         
         store_recording_to_file(filename, r.recording)
-        
+
         with sr.AudioFile(file_config.get("WAV_PATH") + filename) as source:
             # listen for the data (load audio to memory)
             audio_data = recognizer.record(source)

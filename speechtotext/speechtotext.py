@@ -33,10 +33,11 @@ with open(inFile, newline='') as csvfile:
         print("start transcription")
         transcript_recordings(recordings)
         print("end transcription")
-        print(recordings[0].transcript)
-        print("start storing")
-        store_transcripts(recordings)
-        print("end storing")
+        if(len(recordings) > 0):
+            print(recordings[0].transcript)
+            print("start storing")
+            store_transcripts(recordings)
+            print("end storing")
 
         print("---------------------")
         print("END")
